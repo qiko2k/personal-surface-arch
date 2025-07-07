@@ -8,6 +8,13 @@
 
 ---
 
+## ✨ credits
+
+i would like to start this guide with a huge thank you to  👉 **the rad lectures** — [youtube.com/@theradlectures](https://www.youtube.com/@theradlectures) this is almost a one-to-one transcription of his setup with some small tweaks to work better on the **microsoft surface laptop**.  
+ty goat 🫡
+
+---
+
 ## ☁️ connect to wifi (live usb)
 
 ```bash

@@ -1,6 +1,6 @@
 # 🐧 arch linux install - full guide (btrfs + luks + secure boot)
 
-> 👾 encrypted, snapshot-ready, clean af  
+> 👾 encrypted, snapshot-ready, clean  
 > 💿 btrfs + luks + grub  
 > 🔒 secure boot + sbctl  
 > 🧠 tips + comments included  

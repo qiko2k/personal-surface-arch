@@ -240,7 +240,7 @@ yay -S timeshift timeshift-autosnap
 sudo timeshift --list-devices
 
 # create first snapshot
-sudo timeshift --create --comments "[july 7 2025] start of time" --tags d
+sudo timeshift --create --comments "[july 7 2025] start of time" --tags D
 ```
 
 ---

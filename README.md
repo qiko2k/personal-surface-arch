@@ -14,7 +14,7 @@ i would like to start this guide with a huge thank you to
 👉 **the rad lectures** — [youtube.com/@theradlectures](https://www.youtube.com/@theradlectures)  
 this is almost a one-to-one transcription of his setup  
 with some small tweaks to work better on the **microsoft surface laptop**.  
-ty goat 🫡
+ty goat 🐐
 
 ---
 
@@ -319,7 +319,6 @@ sudo ufw allow ssh
 ## 🩹 optional fix if you need it (surface laptop suspend issue)
 
 > 🛠️ without this, suspend/resume will probably break  
-> 💡 only needed for surface laptop (gen 3, 4, 5, etc.)
 
 ---
 
@@ -348,5 +347,8 @@ sudo ufw allow ssh
 ---
 
 ## 🏁 you're done
-> reboot into your encrypted arch install
-> use `timeshift` regularly, keep it lean, stay safe
+> reboot into your encrypted arch install  
+> keep your AUR usage low — more stability, fewer surprises  
+> use `timeshift` often (before big changes especially)  
+> consider setting a bios admin password + locking down grub  
+> stay safe 🫡

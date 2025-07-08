@@ -10,7 +10,10 @@
 
 ## ✨ credits
 
-i would like to start this guide with a huge thank you to  👉 **the rad lectures** — [youtube.com/@theradlectures](https://www.youtube.com/@theradlectures) this is almost a one-to-one transcription of his setup with some small tweaks to work better on the **microsoft surface laptop**.  
+i would like to start this guide with a huge thank you to  
+👉 **the rad lectures** — [youtube.com/@theradlectures](https://www.youtube.com/@theradlectures)  
+this is almost a one-to-one transcription of his setup  
+with some small tweaks to work better on the **microsoft surface laptop**.  
 ty goat 🫡
 
 ---
@@ -167,7 +170,7 @@ pacman -S amd-ucode  # or intel-ucode
 ```bash
 nvim /etc/mkinitcpio.conf
 
-# add modules to MODULES= (these are needed both for btrfs and for kb to work during encrypt)
+# add modules to MODULES=
 MODULES=(pinctrl_amd surface_hid surface_aggregator surface_aggregator_registry surface_aggregator_hub surface_hid_core 8250_dw atkbd btrfs)
 
 # add encrypt hook before filesystems
@@ -192,8 +195,8 @@ grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 blkid  # get uuid of luks partition (nvme0n1p2)
 nvim /etc/default/grub
 
-# make sure to have all of these parameters:
-GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet amd_iommu=off iommu=off cryptdevice=UUID=xxxx-xxxx:main root=/dev/mapper/main"
+# set this:
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet amd_iommu=off iommu=off cryptdevice=UUID=xxxx-xxxx:main root=/dev/mapper/main acpi_rev_override=1"
 
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
@@ -313,8 +316,37 @@ sudo ufw allow ssh
 
 ---
 
-## 🏁 you're done
+## 🩹 optional fix if you need it (surface laptop suspend issue)
 
-> reboot into your encrypted arch install  
-> grub will decrypt luks, show snapshots, and boot into glory  
+> 🛠️ without this, suspend/resume will probably break  
+> 💡 only needed for surface laptop (gen 3, 4, 5, etc.)
+
+---
+
+### ⚡ override acpi
+
+1. edit your grub defaults:  
+   ```bash
+   sudo nvim /etc/default/grub
+   ```
+2. update the `GRUB_CMDLINE_LINUX_DEFAULT` line to include `acpi_rev_override=1` **at the end**, for example:
+
+   ```diff
+   -GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet amd_iommu=off iommu=off cryptdevice=UUID=xxxx-xxxx:main root=/dev/mapper/main"
+   +GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet amd_iommu=off iommu=off cryptdevice=UUID=xxxx-xxxx:main root=/dev/mapper/main acpi_rev_override=1"
+   ```
+
+   > • replace `xxxx-xxxx` with the actual PARTUUID of `/dev/nvme0n1p2`  
+   > • keep all other parameters in place  
+
+3. regenerate your grub config:  
+   ```bash
+   sudo grub-mkconfig -o /boot/grub/grub.cfg
+   ```
+4. reboot and test suspend/resume – should now work 💤
+
+---
+
+## 🏁 you're done
+> reboot into your encrypted arch install
 > use `timeshift` regularly, keep it lean, stay safe

@@ -117,7 +117,7 @@ arch-chroot /mnt  # chroot into the system
 ## 🌍 locale + hostname
 
 ```bash
-ln -sf /usr/share/zoneinfo/europe/stockholm /etc/localtime
+ln -sf /usr/share/zoneinfo/Europe/Stockholm /etc/localtime
 hwclock --systohc  # set hardware clock
 
 pacman -S neovim  # for editing config

@@ -293,7 +293,7 @@ systemctl start /dev/zram0
 sudo pacman -Syu sbctl
 sudo sbctl create-keys
 sudo sbctl status
-sudo sbctl enroll-keys --microsoft  # optional if you dual boot
+sudo sbctl enroll-keys --microsoft  # microsoft tag is optional, read more about it on arch wiki
 
 # sign kernel + grub
 sudo sbctl sign -s /boot/vmlinuz-linux
